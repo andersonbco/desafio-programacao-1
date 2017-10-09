@@ -1,4 +1,8 @@
-<%= flash[:success] %>
+<% if !flash.empty? %>
+    <% flash.keys.each do |k| %>
+        <%= flash[k] %>
+    <% end %> 
+<% end %>
 <br />
 <%= form_for @vendas, url: "/vendas", html: { multipart: true } do |f| %>
     

@@ -5,13 +5,13 @@ class VendasController < ApplicationController
     end
 
     def create
-        # begin
+        begin
             receita_bruta = Vendas.processa_arquivo params[:vendas][:file_name]
             flash[:success] = "A receita bruta total das vendas informadas no arquivo é de R$ #{receita_bruta}"
             
-        # rescue => e 
+        rescue => e 
             flash[:error] = "Erro ao fazer o upload do arquivo!"
-        # end
+        end
 
         redirect_to "/vendas/new"
     end
