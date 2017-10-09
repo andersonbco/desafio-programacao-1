@@ -1,13 +1,24 @@
-<% if !flash.empty? %>
-    <% flash.keys.each do |k| %>
-        <%= flash[k] %>
-    <% end %> 
-<% end %>
-<br />
-<%= form_for @vendas, url: "/vendas", html: { multipart: true } do |f| %>
-    
-      <%= f.file_field :file_name %>
-      <br />
-      <%= f.submit "Enviar" %>
-    
-<% end %>
+<div class="container">
+    <h1>Selecione o arquivo com os dados das vendas</h1>
+    <% if !flash.empty? %>
+        <% flash.keys.each do |k| %>
+            <% if k == 'success' %>
+                <div class="alert alert-success" role="alert">
+                    <%= flash[k] %>
+                </div>
+            <% elsif k == 'error' %>
+                <div class="alert alert-danger" role="alert">
+                    <%= flash[k] %>
+                </div>
+            <% end %>
+        <% end %> 
+    <% end %>
+    <br />
+    <%= form_for @vendas, url: "/vendas", html: { multipart: true } do |f| %>
+        
+        <%= f.file_field :file_name %>
+        <br />
+        <%= f.submit "Enviar", :class => 'btn btn-primary' %>
+        
+    <% end %>
+</div>
