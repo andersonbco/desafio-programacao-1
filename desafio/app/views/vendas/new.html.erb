@@ -1,0 +1,9 @@
+<%= flash[:success] %>
+<br />
+<%= form_for @vendas, url: "/vendas", html: { multipart: true } do |f| %>
+    
+      <%= f.file_field :file_name %>
+      <br />
+      <%= f.submit "Enviar" %>
+    
+<% end %>
